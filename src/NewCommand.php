@@ -63,42 +63,42 @@ class NewCommand extends Command
     {
         $wfName = $input->getArgument('name');
 
-        // if (! class_exists('ZipArchive')) {
-        //     throw new RuntimeException('The Zip PHP extension is not installed. Please install it and try again.');
-        // }
+        if (! class_exists('ZipArchive')) {
+            throw new RuntimeException('The Zip PHP extension is not installed. Please install it and try again.');
+        }
 
-        // if(!$wfName){
-        //     throw new RuntimeException('Please enter your workflow name after command new ex. `khunpra new FixAsset`');
-        // }
+        if(!$wfName){
+            throw new RuntimeException('Please enter your workflow name after command new ex. `khunpra new FixAsset`');
+        }
 
-        // $directory = ($wfName) ? getcwd().'/'.$wfName : getcwd();
+        $directory = ($wfName) ? getcwd().'/'.$wfName : getcwd();
 
-        // $this->verifyApplicationDoesntExist($directory);
+        $this->verifyApplicationDoesntExist($directory);
 
-        // $output->writeln('<info>Crafting MIS Workflow Application ...</info>');
+        $output->writeln('<info>Crafting MIS Workflow Application ...</info>');
 
-        // $version = $this->getVersion($input);
+        $version = $this->getVersion($input);
 
-        // $this->download($zipFile = $this->makeFilename(), $version)
-        //      ->extract($zipFile, $directory)
-        //      ->cleanUp($zipFile);
+        $this->download($zipFile = $this->makeFilename(), $version)
+             ->extract($zipFile, $directory)
+             ->cleanUp($zipFile);
 
-        // $composer = $this->findComposer();
-        // $output->writeln('<comment> Composer is here : ' . $composer . '</comment>');
+        $composer = $this->findComposer();
+        $output->writeln('<comment> Composer is here : ' . $composer . '</comment>');
 
-        // $commands = [
-        //     $composer.' install --no-scripts',
-        // ];
+        $commands = [
+            $composer.' install --no-scripts',
+        ];
 
-        // $process = new Process(implode(' && ', $commands), $directory, null, null, null);
+        $process = new Process(implode(' && ', $commands), $directory, null, null, null);
 
-        // if ('\\' !== DIRECTORY_SEPARATOR && file_exists('/dev/tty') && is_readable('/dev/tty')) {
-        //     $process->setTty(true);
-        // }
+        if ('\\' !== DIRECTORY_SEPARATOR && file_exists('/dev/tty') && is_readable('/dev/tty')) {
+            $process->setTty(true);
+        }
 
-        // $process->run(function ($type, $line) use ($output) {
-        //     $output->write($line);
-        // });
+        $process->run(function ($type, $line) use ($output) {
+            $output->write($line);
+        });
 
         $output->writeln('<comment>' . $this->logo . '</comment>');
         $output->writeln('<info>                                                                              </info>');
