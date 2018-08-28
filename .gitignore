@@ -1,3 +1,7 @@
+oldVersion/
+#PHP
+vendor/
+
 # Logs
 logs
 *.log

@@ -1,0 +1,27 @@
+{
+    "name": "aonrobot/khunpraInstaller",
+    "description": "Khunpra MIS Workflow installer.",
+    "keywords": ["khunpra", "MIS", "Metrosystems"],
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "MIS Metrosystems",
+            "email": "mis@metrosystems.co.th"
+        }
+    ],
+    "autoload": {
+        "psr-4": {
+            "Khunpra\\Installer\\Console\\": "src/"
+        }
+    },
+    "require": {
+        "ext-zip": "*",
+        "guzzlehttp/guzzle": "~6.0",
+        "symfony/console": "~3.0|~4.0",
+        "symfony/filesystem": "~3.0|~4.0",
+        "symfony/process": "~3.0|~4.0"
+    },
+    "bin": [
+        "khunpra"
+    ]
+}
