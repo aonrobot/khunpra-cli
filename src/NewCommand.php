@@ -68,34 +68,34 @@ class NewCommand extends Command
             throw new RuntimeException('Please enter your workflow name after command new ex. `khunpra new FixAsset`');
         }
 
-        // $directory = ($wfName) ? getcwd().'/'.$wfName : getcwd();
+        $directory = ($wfName) ? getcwd().'/'.$wfName : getcwd();
 
-        // $this->verifyApplicationDoesntExist($directory);
+        $this->verifyApplicationDoesntExist($directory);
 
-        // $output->writeln('<info>Crafting MIS Workflow Application ...</info>');
+        $output->writeln('<info>Crafting MIS Workflow Application ...</info>');
 
-        // $version = $this->getVersion($input);
+        $version = $this->getVersion($input);
 
-        // $this->download($zipFile = $this->makeFilename(), $version)
-        //      ->extract($zipFile, $directory)
-        //      ->cleanUp($zipFile);
+        $this->download($zipFile = $this->makeFilename(), $version)
+             ->extract($zipFile, $directory)
+             ->cleanUp($zipFile);
 
-        // $composer = $this->findComposer();
-        // $output->writeln('<comment> Composer is here : ' . $composer . '</comment>');
+        $composer = $this->findComposer();
+        $output->writeln('<comment> Composer is here : ' . $composer . '</comment>');
 
-        // $commands = [
-        //     $composer.' install --no-scripts',
-        // ];
+        $commands = [
+            $composer.' install --no-scripts',
+        ];
 
-        // $process = new Process(implode(' && ', $commands), $directory, null, null, null);
+        $process = new Process(implode(' && ', $commands), $directory, null, null, null);
 
-        // if ('\\' !== DIRECTORY_SEPARATOR && file_exists('/dev/tty') && is_readable('/dev/tty')) {
-        //     $process->setTty(true);
-        // }
+        if ('\\' !== DIRECTORY_SEPARATOR && file_exists('/dev/tty') && is_readable('/dev/tty')) {
+            $process->setTty(true);
+        }
 
-        // $process->run(function ($type, $line) use ($output) {
-        //     $output->write($line);
-        // });
+        $process->run(function ($type, $line) use ($output) {
+            $output->write($line);
+        });
 
         $output->writeln('<comment>' . $this->logo . '</comment>');
         $output->writeln('<info>                                                                                 </info>');
@@ -105,7 +105,7 @@ class NewCommand extends Command
         $output->writeln('<info>    ┃                                                                       ┃    </info>');
         $output->writeln('<info>    ┃   [ run below command to test ]                                       ┃    </info>');
         $output->writeln('<info>    ┃                                                                       ┃    </info>');
-        $output->writeln('<info>    ┃   cd </info>' . $wfName . '<info> && cp .env.example .env && php -S localhost:1234              ┃    </info>');
+        $output->writeln('<info>    ┃   cd </info>' . $wfName . '<info> && cp .env.example .env && php -S localhost:1234          ┃    </info>');
         $output->writeln('<info>    ┃                                                                       ┃    </info>');
         $output->writeln('<info>    ┗━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━┛    </info>');
         $output->writeln('<info>                                                                                 </info>');
